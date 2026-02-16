@@ -33,4 +33,27 @@
     font-size: 50px;
  }
 
+ /* sezione dipendeti */
+   
+ .userHeight{
+ height: 70vh;
+     }
+
+     /*movies*/
+
+     .movie{
+       background-image: url('./media/sala\ cinema.webp');
+    min-height: 95vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; 
+     }
+
+     .cardImg{
+      height: 250px;
+      object-position: center;
+     }
+ 
+
  

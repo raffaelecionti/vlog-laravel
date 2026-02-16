@@ -1,4 +1,4 @@
- <!doctype html>
+  <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -40,36 +40,28 @@
   </div>
 </nav>
 <header> 
-    
-    <div class="container-fluid header">
-   <div class="row h-100 justify-content-around align-items-center">
-   <div class="col-6">
-    <h2 class=" text-white text-color text-center">Chi Siamo</h2>
-    <p class="text-white text-color">Siamo un team appassionato di cinema e film. Il nostro obiettivo è condividere le ultime notizie, recensioni e informazioni sul mondo del cinema con il nostro pubblico.</p>
-   </div>
-   <div class="col-6">
-    <img src="/media/foto cinema.webp" alt="foto cinema" class="shadow rounded">
-   </div>
-   </div>
-    </div>
-</header>
-<section>
-    <div class="container userHeight">
-        <div class="row h-100 justify-content-around align-items-center">
-            @foreach ($users as $user)
-           <div class="col-12 col-md-4">
-            <div class="card" style="width: 18rem;">
+    <div class="container-fluid movies">
+        <div class="row h-100 justify-content-center">
+            <div class="row">
+                <h2 class=" display-5 text-center text-white text-color">tutti i nostri film</h2>
+            </div>
+          @foreach ($movies as $movie)
+          <div class="col-12 col-md-3 ">
+            <div class="card mb-3" style="width: 18rem;">
+  <img src="{{ $movie['img'] }}" class="card-img-top cardImg" alt="poster di {{ $movie['title'] }}">
   <div class="card-body">
-    <h5 class="card-title">{{ $user['name'] . " " . $user['surname'] }}</h5>
-    <h6 class="card-subtitle mb-2 text-body-secondary">{{ $user['role'] }} </h6>
-    <a href="{{ route('about-us-detail', ['name' => $user['name']]) }}" class="card-link">Leggi di piu</a>
+    <h5 class="card-title">{{ $movie['title'] }}</h5>
+    <h5 class="card-title muted">{{ $movie['director'] }}</h5>
+    <p class="card-text">{{ $movie['genres'] }}</p>
+    <a href="#" class="btn btn-primary"></a>
   </div>
 </div>
-           </div>
-            @endforeach
+          </div>
+          @endforeach
         </div>
+
+            
     </div>
-</section>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
   </body>
 </html>
