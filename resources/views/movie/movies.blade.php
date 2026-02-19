@@ -30,9 +30,10 @@
             i nostri servizi:
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ route('movie.list') }}">tutti i nostri film</a></li>
+            <li><a class="dropdown-item btn" href="{{ route('movie.list') }}">tutti i nostri film</a></li>
           </ul>
         </li>
+        
       
       </ul>
       
@@ -53,7 +54,7 @@
     <h5 class="card-title">{{ $movie['title'] }}</h5>
     <h5 class="card-title muted">{{ $movie['director'] }}</h5>
     <p class="card-text">{{ $movie['genres'] }}</p>
-    <a href="#" class="btn btn-primary"></a>
+    <a href="{{ route('movie.detail', $movie['id']) }}" class="btn btn-primary">dettagli</a>
   </div>
 </div>
           </div>

@@ -28,8 +28,10 @@ class MovieController extends Controller
 public function movieDetail ($id){  
         foreach ($this->movies as $movie){
             if ($id == $movie['id']){
-                return view('movies.movie-detail', ['movie' => $movie]);
+                return view('movie.movie-detail', ['movie' => $movie]);
+
             }
         }
 }
+
 }
