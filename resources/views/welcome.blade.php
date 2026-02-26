@@ -3,6 +3,12 @@
 <header> 
     
     <div class="container-fluid header">
+      @if (session()->has('emailSent'))
+  <div class="alert alert-success">{{ session('emailSent') }}</div>
+      @endif
+       @if (session()->has('emailError'))
+  <div class="alert alert-danger">{{ session('emailError') }}</div>
+      @endif
    <div class="row h-100 justify-content-around align-items-center">
    <div class="col-6">
     <h2 class=" text-white text-color text-center">Home</h2>
@@ -19,6 +25,6 @@
     <h2 class=" text-white text-color text-center">contattaci</h2>
    </div>
    </div>
-</section>
+</header>>
 </x-layout>
    
