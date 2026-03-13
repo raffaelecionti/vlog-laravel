@@ -20,4 +20,8 @@ Route::get('/contatti', function() {
 
 Route::post('/contacts', [PublicController::class, 'contactUs'])->name('contactUs');
 
+Route::get('/movies/create', [MovieController::class, 'create'])->name('movie.create');
+
+Route::post('/movies/submit', [MovieController::class, 'submit'])->name('movie.submit');
+
 
