@@ -35,7 +35,7 @@ class MovieController extends Controller
 public function create (){
   return view ('movie.create');
 }
-public function store(MovieRequest $request){
+public function submit(MovieRequest $request){
 $movie = Movie::create([
 'title' => $request->title,
 'director' => $request->director,
