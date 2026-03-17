@@ -37,7 +37,7 @@
   </div>
   <div class="mb-3">
     <label for="plot" class="form-label">Trama:</label>
-   <textarea name="plot" id="" cols="30" rows="10" class="form-control">{{old('plot')}}</textarea>
+   <textarea name="plot" id="" cols="30" rows="10" class="form-control" >{{old('plot')}}</textarea>
   </div>
  
   <button type="submit" class="btn btn-primary">Inserisci il tuo film</button>
