@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\PublicController;
 
+Route::middleware('auth')->group(function () {
 Route::get('/',[PublicController::class, 'homepage'])->name('homepage');
 
 Route::get('/chi-siamo', [PublicController::class, 'aboutus'])->name ('about-us');
@@ -13,6 +14,8 @@ Route::get('/chi-siamo/detail/{name}', [PublicController::class, 'aboutUsDetail'
 Route::get('/movies', [MovieController::class, 'movieList'])->name('movie.list');
 
 Route::get('/movies/detail/{id}', [MovieController::class, 'movieDetail'])->name('movie.detail');
+});
+
 
 Route::get('/contatti', function() {
     return view ('contacts');

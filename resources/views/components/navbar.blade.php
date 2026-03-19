@@ -27,6 +27,27 @@
             <li><a class="dropdown-item" href="{{ route('movie.create') }}">inserisci un nuovo film</a></li>
           </ul>
       </ul>
+       <li class="nav-item dropdown">
+        @auth
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Ciao, {{Auth::user()->name}}
+          </a>
+          <ul class="dropdown-menu">
+             <li>
+              <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('form-logout').submit();" class="dropdown-item">Logout</a> 
+              <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display:none;">
+                @csrf
+              </form>
+            </li>
+          </ul>
+          @else
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+            <li><a class="dropdown-item" href="{{ route('register') }}">register</a></li>
+
+          </ul>
+          @endauth
+        </li>
       
     </div>
   </div>
