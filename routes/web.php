@@ -27,4 +27,20 @@ Route::get('/movies/create', [MovieController::class, 'create'])->name('movie.cr
 
 Route::post('/movies/submit', [MovieController::class, 'submit'])->name('movie.submit');
 
+Route::get('/movie/add', [MovieController::class, 'add'])->name('movie.add');
+
+Route::post('/movie/add/sending', [MovieController::class, 'store'])->name('movie.sending');
+
+Route::get('/movie/index', [MovieController::class, 'index'])->name('movie.index');
+
+Route::get('/movie/show/{movie}', [MovieController::class, 'show'])->name('movie.show');
+
+Route::get('/movie/edit/{movie}', [MovieController::class, 'edit'])->name('movie.edit');
+
+Route::put('/movie/update/{movie}', [MovieController::class, 'update'])->name('movie.update');
+
+Route::delete('/movie/delete/{movie}', [MovieController::class, 'destroy'])->name('movie.delete');
+
+
+
 
