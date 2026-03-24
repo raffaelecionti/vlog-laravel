@@ -41,6 +41,10 @@ Route::put('/movie/update/{movie}', [MovieController::class, 'update'])->name('m
 
 Route::delete('/movie/delete/{movie}', [MovieController::class, 'destroy'])->name('movie.delete');
 
+Route::resource('movies', MovieController::class)->middleware('auth')->except('index');
+
+Route::get('/user/profile', [PublicController::class, 'profile'])->name('user-profile');
+
 
 
 

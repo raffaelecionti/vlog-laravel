@@ -15,6 +15,9 @@
       @if (session ()->has('succesMessage'))
          <div class="alert alert-success pt-5">{{ session('succesMessage') }}</div>
       @endif
+      @if(session()->has('errorMessage'))
+  <div class="alert alert-danger pt-5">{{ session('errorMessage') }}</div>
+      @endif
    <div class="row h-100 justify-content-around align-items-center">
    <div class="col-6">
     <h2 class=" text-white text-color text-center">Home</h2>

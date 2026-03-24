@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\MovieEditRequest;
 use App\Http\Requests\MovieRequest;
 use App\Models\Movie;
+use Illuminate\Support\Facades\Auth;
 //use Illuminate\Http\Request;
 //use Illuminate\Http\Request;
 // Illuminate\Http\Request;
@@ -14,18 +15,42 @@ use App\Models\Movie;
 class MovieController extends Controller
 {
 
-public function destroy (Movie $movie){
-  $movie->delete();
-  return redirect()->route('homepage')->with('successMessage', 'hai correttamente eliminato il film');
+public function __construct()
+{
+  
 }
 
+public function destroy (Movie $movie){
+  if($movie->user_id == Auth::id ()){
+  $movie->delete();
+  return redirect()->route('homepage')->with('successMessage', 'hai correttamente eliminato il film');
+  }else{
+    return redirect()->route('homepage')->with('errorMessage', 'non puoi vedere questa pagina');
+  }
+  
+  }
+
+
 public function update (MovieEditRequest $request, Movie $movie){
-  $movie->update([
-    $movie->title = $request->title,
-    $movie->director = $request->director,
-    $movie->year = $request->year,
-    $movie->plot = $request->plot,
-  ]);
+  if($movie->user_id == Auth::id()){
+    $movie->update([
+      'title' => $request->title,
+      'director' => $request->director,
+      'year' => $request->year,
+      'plot' => $request->plot,
+    ]);
+  }else{
+    return redirect()->route('homepage')->with('errorMessage', 'non puoi vedere questa pagina');
+  }
+
+  if($request->hasFile('img')){
+    // 1. Carica il file e ottieni il percorso
+    $path = $request->file('img')->store('public/images');
+    
+    // 2. Aggiorna l'attributo del modello con il nuovo percorso
+    $movie->img = $path;
+    }
+  
  
     
   if($request->hasFile('img')){
@@ -44,7 +69,11 @@ public function update (MovieEditRequest $request, Movie $movie){
 
 
 public function edit (Movie $movie){
-  return view('movie.edit', compact ('movie'));
+  if($movie->user_id == Auth::id()){
+    return view('movie.edit', compact ('movie'));
+  }else{
+    return redirect()->route('homepage')->with('errorMessage', 'non puoi vedere questa pagina');
+  }
 }
 
 public function show(Movie $movie){
@@ -63,6 +92,7 @@ $movie= Movie::create([
   'year' => $request->year,
   'plot' => $request->plot,
   'img' => $request->file('img')->store('public/images'),
+  'user_id' => Auth::user()->id,
 ]);
 
 return redirect()->route('homepage')->with('successMessage', 'hai inserito il tuo film preferito');

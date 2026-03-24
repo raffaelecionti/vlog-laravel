@@ -36,6 +36,7 @@
             Ciao, {{Auth::user()->name}}
           </a>
           <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ route('user.profile') }}">Profilo personale</a></li>
              <li>
               <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('form-logout').submit();" class="dropdown-item">Logout</a> 
               <form id="form-logout" action="{{ route('logout') }}" method="POST" style="display:none;">

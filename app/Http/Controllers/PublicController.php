@@ -8,9 +8,11 @@ use Illuminate\Support\Facades\Mail;
 
 class PublicController extends Controller
 {
+
+
     public  $users = [
-    ['name' => 'Mario', 'surname' => 'Rossi', 'role' => 'Founder & CEO', ],
-    ['name' => 'Luigi', 'surname' => 'Bianchi', 'role' => 'Content Manager', ],
+   ['name' => 'Mario', 'surname' => 'Rossi', 'role' => 'Founder & CEO', ],
+   ['name' => 'Luigi', 'surname' => 'Bianchi', 'role' => 'Content Manager', ],
     ['name' => 'Giulia', 'surname' => 'Verdi', 'role' => 'Social Media Manager', ],
     ];
     public function homepage(){
@@ -47,5 +49,11 @@ Mail::to($email)->send(new ContactMail($userData));
     }
     return redirect()->route('homepage')->with('emailSent','hai correttamente inviato una email');
 }
+
+
+public function profile(){
+    return view('profile');
+}
+
 }
 
