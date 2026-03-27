@@ -43,7 +43,8 @@ Route::delete('/movie/delete/{movie}', [MovieController::class, 'destroy'])->nam
 
 Route::resource('movies', MovieController::class)->middleware('auth')->except('index');
 
-Route::get('/user/profile', [PublicController::class, 'profile'])->name('user-profile');
+Route::get('/user/profile', [PublicController::class, 'profile'])->name('user.profile');
+
 
 
 

@@ -24,7 +24,9 @@
           </ul>
         </li>
        <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="{{ route('movie.add') }}">inserisci un nuovo film</a></li>
+            <li>
+              <a class="dropdown-item" href="{{ route('movie.create') }}">inserisci un nuovo film</a>
+            </li>
           </ul>
            <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{ route('movie.index') }}">tutti i  film</a></li>
