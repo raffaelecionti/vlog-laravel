@@ -46,9 +46,8 @@ public function update (MovieEditRequest $request, Movie $movie){
   if($request->hasFile('img')){
     // 1. Carica il file e ottieni il percorso
     $path = $request->file('img')->store('public/images');
-    
-    // 2. Aggiorna l'attributo del modello con il nuovo percorso
     $movie->img = $path;
+    $movie->save();
     }
   
  
@@ -93,6 +92,7 @@ $movie= Movie::create([
   'plot' => $request->plot,
   'img' => $request->file('img')->store('public/images'),
   'user_id' => Auth::user()->id,
+
 ]);
 
 return redirect()->route('homepage')->with('successMessage', 'hai inserito il tuo film preferito');

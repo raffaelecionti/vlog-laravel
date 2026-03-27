@@ -53,10 +53,37 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
             <li><a class="dropdown-item" href="{{ route('register') }}">register</a></li>
-
+          @guest
+    {{-- Se l'utente NON è loggato, vede questi due link --}}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('login') }}">Accedi</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('register') }}">Registrati</a>
+    </li>
+@else
+    <li class="nav-item">
+        <a class="nav-link" href="{{ route('movie.create') }}">Inserisci Film</a>
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Ciao, {{ Auth::user()->name }}
+        </a>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ route('user.profile') }}">Il mio Profilo</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li>
+                <form action="{{ route('logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" class="dropdown-item">Logout</button>
+                </form>
+            </li>
+        </ul>
+    </li>
+@endguest
           </ul>
           @endauth
-        </li>
+      
       
     </div>
   </div>
