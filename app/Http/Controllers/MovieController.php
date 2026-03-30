@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MovieEditRequest;
 use App\Http\Requests\MovieRequest;
+use App\Models\Genre;
 use App\Models\Movie;
 use Illuminate\Support\Facades\Auth;
 //use Illuminate\Http\Request;
@@ -95,6 +96,8 @@ $movie= Movie::create([
 
 ]);
 
+$movie->genres()->attach($request->genres);
+
 return redirect()->route('homepage')->with('successMessage', 'hai inserito il tuo film preferito');
 }
  
@@ -116,8 +119,10 @@ public function add (){
 
 
 public function create (){
-  return view ('movie.create');
+  $genres = Genre::all();
+  return view ('movie.create', compact('genres'));  
 }
+
 public function submit(MovieRequest $request){
 $movie = Movie::create([
 'title' => $request->title,

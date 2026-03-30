@@ -30,6 +30,7 @@
           </ul>
            <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{ route('movie.index') }}">tutti i  film</a></li>
+            <li><a class="dropdown-item" href="{{ route('genre.create') }}">inserisci una categoria</a></li>
           </ul>
       </ul>
        <li class="nav-item dropdown">
@@ -53,6 +54,8 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
             <li><a class="dropdown-item" href="{{ route('register') }}">register</a></li>
+            <li><a class="dropdown-item" href="{{ route('genre.index') }}">tutte le categorie</a></li>
+            <li><a class="dropdown-item" href="{{ route('genre.create') }}">inserisci categoria</a></li>
           @guest
     {{-- Se l'utente NON è loggato, vede questi due link --}}
     <li class="nav-item">
