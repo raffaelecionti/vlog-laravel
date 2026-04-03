@@ -5,16 +5,17 @@ use App\Http\Controllers\MovieController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
-//rotte pubbliche
+// ROTTE PUBBLICHE (Tutti le vedono)
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/chi-siamo', [PublicController::class, 'aboutus'])->name('about-us');
-Route::get('/movie/index', [MovieController::class, 'movieList'])->name('movie.list');
-Route::get('/movie/show/{movie}', [MovieController::class, 'movieDetail'])->name('movie.detail');
+Route::get('/chi-siamo/{name}', [PublicController::class, 'aboutUsDetail'])->name('about-us-detail');
+Route::get('/contatti', [PublicController::class, 'contact'])->name('contact');
+Route::post('/invia-contatti', [PublicController::class, 'contactUs'])->name('contactUs');
+Route::get('/movie/index', [MovieController::class, 'movieList'])->name('movie.list'); 
 
-// GRUPPO ROTTE PROTETTE
+// ROTTE PROTETTE (Solo per chi ha fatto login)
 Route::middleware(['auth'])->group(function () {
-    Route::get('/contatti', [PublicController::class, 'contactus'])->name('contactus');
-    Route::post('/contatti/submit', [PublicController::class, 'contactusSubmit'])->name('movie.submit');
+    Route::get('/movie/create', [MovieController::class, 'create'])->name('movie.create');
     
     // Rotte per inserimento e gestione film
     Route::get('/movie/create', [MovieController::class, 'create'])->name('movie.create');

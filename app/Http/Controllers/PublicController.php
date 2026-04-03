@@ -24,31 +24,37 @@ class PublicController extends Controller
     return view('about-us', ['users' => $this->users]);
 }
 
-public function aboutUsDetail ($name){
-   
+public function aboutUsDetail($name) {
     foreach ($this->users as $user) {
-        if ($user['name'] === $name) {
-            return view('movie.about-us-detail', ['user' => $user]);
+        if ($user['name'] == $name) {
+            // Assicurati che il nome della vista sia corretto (senza "movie." se il file è nella cartella base)
+            return view('about-us-detail', ['user' => $user]);
         }
     }
+    // Gestisci il caso in cui l'utente non viene trovato
+    return redirect()->route('about-us')->with('error', 'Utente non trovato');
 }
+
 
 public function contact(){
     return view('contacts');
 }
-public function contactUs(Request $request){
+public function contactUs(Request $request) {
     $user = $request->input('user');
     $email = $request->input('email');
     $message = $request->input('message');
-    $userData = compact('user','email','message');
-    try{
-Mail::to($email)->send(new ContactMail($userData));
-    }catch(\Exception $e){
-        dd($e);
-        return redirect()->route('homepage')->with('emailError', 'ce stato un problema nell invio della email');
+
+    $userData = compact('user', 'email', 'message');
+
+    try {
+        Mail::to('tuamail@esempio.it')->send(new ContactMail($userData));
+        
+    } catch (\Exception $e) {
+        return redirect()->route('homepage')->with('emailError', 'Errore nell\'invio: ' . $e->getMessage());
     }
-    return redirect()->route('homepage')->with('emailSent','hai correttamente inviato una email');
-}
+
+    return redirect()->route('contact')->with('emailsent', 'Hai correttamente inviato una email!');
+} 
 
 
 public function profile(){
