@@ -12,6 +12,7 @@ Route::get('/chi-siamo/{name}', [PublicController::class, 'aboutUsDetail'])->nam
 Route::get('/contatti', [PublicController::class, 'contact'])->name('contact');
 Route::post('/invia-contatti', [PublicController::class, 'contactUs'])->name('contactUs');
 Route::get('/movie/index', [MovieController::class, 'movieList'])->name('movie.list'); 
+Route::get('/posts', [PublicController::class, 'posts'])->name('posts');
 
 // ROTTE PROTETTE (Solo per chi ha fatto login)
 Route::middleware(['auth'])->group(function () {
@@ -28,4 +29,6 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/genre/store', [GenreController::class, 'store'])->name('genre.submit');
     Route::get('/genre/index', [GenreController::class, 'index'])->name('genre.index');
     Route::get('/genre/show/{genre}', [GenreController::class, 'show'])->name('genre.show');
+
+
 });

@@ -11,11 +11,15 @@
                     <a class="nav-link active" href="{{ route('homepage') }}">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('posts') }}">Tutti i post</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('about-us') }}">Chi Siamo</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('contact') }}">Contatti</a>
+                    <a class="nav-link" href="{{ route('contact') }}">Contattaci</a>
                 </li>
+
 
                 {{-- Dropdown Servizi (Film e Categorie) --}}
                 <li class="nav-item dropdown">
