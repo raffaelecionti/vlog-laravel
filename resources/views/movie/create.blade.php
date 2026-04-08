@@ -17,7 +17,7 @@
 @endif
 
 <!-- Create Post Form -->
-        <form method="post" action="{{route('movie.submit')}}" enctype="multipart/form-data">
+        <form method="post" action="{{route('movie.store')}}" enctype="multipart/form-data">
             @csrf
   <div class="mb-3">
     <label for="title" class="form-label">Titolo:</label>
