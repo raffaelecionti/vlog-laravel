@@ -41,8 +41,8 @@
   </div>
  <div class="mb-3">
   @foreach ($genres as $genre)
-     <input type="checkbox" id="{{'genreCheck' . $gerne->id}}" name="genres[]" value="{{$genre->id}}"> 
-     <label for="{{'genreCheck' . $gerne->id}}">{{genre->name}}</label>
+     <input type="checkbox" id="{{'genreCheck' . $genre->id}}" name="genres[]" value="{{$genre->id}}"> 
+     <label for="{{'genreCheck' . $genre->id}}">{{genre->name}}</label>
   @endforeach
   <p>non vedi la categoria corretta? <a href="{{route('genre.create')}}" class="fst-italic small text-white">inseriscila tu</a></p>
  </div>
